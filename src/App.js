@@ -1,4 +1,5 @@
 import React from "react";
+import "@mui/material";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";

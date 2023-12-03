@@ -14,9 +14,11 @@
   }
   &__input {
     flex: 1;
-    margin-left: 20px;
     font-size: 20px;
     border: none;
+    padding: 20px;
+    border-radius: 8px;
+    border-color: #1da1f2;
   }
   &__btn {
     padding: 15px 30px 18px 30px;
@@ -44,7 +46,7 @@
   &__span {
     display: flex;
     align-items: center;
-    column-gap: 10px;
-    margin-left: 99px;
+    column-gap: 23px;
+    margin-left: 60px;
   }
 }

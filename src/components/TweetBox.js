@@ -5,16 +5,14 @@ import gifIcon from "../images/icon/gif.svg";
 import statsIcon from "../images/icon/stats.svg";
 import smileIcon from "../images/icon/smile.svg";
 import scheduleIcon from "../images/icon/schedule.svg";
+import ProfilePic from "../images/icon/ProfilePic.svg";
 
 const TweetBox = () => {
   return (
     <div className="tweetBox">
       <form>
         <div className="tweetBox__inputBox">
-          <img
-            className="tweetBox__img"
-            src="https://www.imagdisplays.co.uk/wp-content/uploads/2021/04/PHOTO-2020-08-13-16-07-05.jpg"
-          />
+          <img className="tweetBox__img" src={ProfilePic} />
           <input
             className="tweetBox__input"
             placeholder="What's happening?"
@@ -29,10 +27,6 @@ const TweetBox = () => {
             <img src={smileIcon} alt="image" />
             <img src={scheduleIcon} alt="image" />
           </span>
-          {/* <input
-            className="tweetBox__url"
-            placeholder="Optional: enter image URL"
-          /> */}
           <button className="tweetBox__btn">Tweet</button>
         </div>
       </form>
