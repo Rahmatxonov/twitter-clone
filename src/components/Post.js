@@ -16,12 +16,11 @@ const Post = forwardRef(
         </div>
         <div className="post__body">
           <div className="post__header">
-            <div className="post__header__headerText">
-              <h3 className="post__header__headerText__title">
+            <div className="post__headerText">
+              <h3 className="post__title">
                 {displayName}{" "}
                 <span className="post__headerSpecial">
                   {verified && <VerifiedUserIcon className="post__badge" />} @
-                  {/* Rahmatxonov Xasanxon */}
                   {username}
                 </span>
               </h3>
@@ -32,9 +31,10 @@ const Post = forwardRef(
           </div>
           <img
             className="avatarimg"
-            src="https://media3.giphy.com/media/H2n5LOh3lvuOQ/giphy.gif"
+            src="https://media0.giphy.com/media/nDSlfqf0gn5g4/giphy.gif"
             alt="image"
           />
+
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />

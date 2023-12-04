@@ -8,9 +8,23 @@
     border-radius: 20px;
     margin-top: 10px;
     margin-left: 20px;
+    &__input {
+      border: none;
+      background: var(--twitter-background);
+    }
   }
-  &__input {
-    border: none;
-    background-color: var(--twitter-background);
+  &__searchIcon {
+    color: #888;
+  }
+  &__widgetContainer {
+    margin-top: 15px;
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #f5f8fa;
+    border-radius: 20px;
+    &__title {
+      font-size: 18px;
+      font-weight: 800;
+    }
   }
 }
