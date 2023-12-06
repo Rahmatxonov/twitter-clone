@@ -1,6 +1,7 @@
+@import "./mixin.scss";
 .Widgets {
   flex: 0.3;
-
+  z-index: 100;
   &__inputBox {
     display: flex;
     align-items: center;

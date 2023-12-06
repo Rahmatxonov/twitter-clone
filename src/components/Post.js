@@ -1,50 +1,82 @@
-import React, { forwardRef } from "react";
-import "./Post.scss";
-import { Avatar } from "@material-ui/core";
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PublishIcon from "@material-ui/icons/Publish";
+import React, { forwardRef, useEffect, useState } from "react";
+import "../sass/Post.scss";
 
-const Post = forwardRef(
-  ({ displayName, username, verified, text, image, avatar }, ref) => {
-    return (
-      <div className="post" ref={ref}>
-        <div className="post__avatar">
-          <Avatar src={avatar} />
-        </div>
-        <div className="post__body">
-          <div className="post__header">
-            <div className="post__headerText">
-              <h3 className="post__title">
-                {displayName}{" "}
-                <span className="post__headerSpecial">
-                  {verified && <VerifiedUserIcon className="post__badge" />} @
-                  {username}
-                </span>
-              </h3>
-            </div>
-            <div className="post__headerDescription">
-              <p>{text}</p>
-            </div>
-          </div>
-          <img
-            className="avatarimg"
-            src="https://media0.giphy.com/media/nDSlfqf0gn5g4/giphy.gif"
-            alt="image"
-          />
+function Post({ tweet_id, image, username, text, comments, retweets, likes }) {
+  const [icons, setIcons] = useState({
+    comments: false,
+    retweets: false,
+    likes: false,
+  });
 
-          <div className="post__footer">
-            <ChatBubbleOutlineIcon fontSize="small" />
-            <RepeatIcon fontSize="small" />
-            <FavoriteBorderIcon fontSize="small" />
-            <PublishIcon fontSize="small" />
-          </div>
+  const [iconValues, setIconValues] = useState({
+    likes,
+    comments,
+    retweets,
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem(`post-${tweet_id}`)) {
+      setIconValues(JSON.parse(localStorage.getItem(`post-${tweet_id}`)));
+    }
+    if (localStorage.getItem("likes")) {
+      let likes = JSON.parse(localStorage.getItem("likes"));
+      setIcons({ ...icons, likes: likes.includes((i) => i === tweet_id) });
+    }
+  }, []);
+
+  function onClick(property) {
+    let newObj = {
+      ...icons,
+      [property]: !icons[property],
+    };
+    let newValues = {
+      ...iconValues,
+      [property]: newObj[property]
+        ? iconValues[property] + 1
+        : iconValues[property] - 1,
+    };
+    if (!localStorage.getItem(property)) {
+      localStorage.setItem(property, JSON.stringify([tweet_id]));
+    }
+    setIcons(newObj);
+    setIconValues(newValues);
+    localStorage.setItem(`post-${tweet_id}`, JSON.stringify(newValues));
+  }
+
+  return (
+    <div className="post">
+      <div className="post__content">
+        <img src={image} alt="" />
+
+        <div className="post__content__text">
+          <h5>{username}</h5>
+          <p>{text}</p>
         </div>
       </div>
-    );
-  }
-);
+      <div className="post__btns">
+        <div
+          class={`post-icon ${icons.comments && "green"}`}
+          onClick={() => onClick("comments")}
+        >
+          <i class="fa-regular fa-comment"></i> {iconValues.comments}
+        </div>
+        <div
+          class={`post-icon ${icons.retweets && "green"}`}
+          onClick={() => onClick("retweets")}
+        >
+          <i class="fa-solid fa-retweet"></i> {iconValues.retweets}
+        </div>
+        <div
+          class={`post-icon ${icons.likes && "post-icon-active"}`}
+          onClick={() => onClick("likes")}
+        >
+          <i class="fa-solid fa-heart"></i> {iconValues.likes}
+        </div>
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        <i class="fa-solid fa-chart-simple"></i>
+      </div>
+    </div>
+  );
+}
 
 export default Post;

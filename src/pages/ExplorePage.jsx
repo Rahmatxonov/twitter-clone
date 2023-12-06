@@ -1,7 +1,11 @@
 import React from "react";
 
 const ExplorePage = () => {
-  return <div>ExplorePage</div>;
+  return (
+    <div>
+      <h1>ExplorePage</h1>
+    </div>
+  );
 };
 
 export default ExplorePage;

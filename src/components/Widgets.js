@@ -1,5 +1,7 @@
 import React from "react";
-import "./Widgets.scss";
+import "../sass/Widgets.scss";
+import "../sass/mixin.scss";
+
 import {
   TwitterTweetEmbed,
   TwitterTimelineEmbed,

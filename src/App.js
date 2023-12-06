@@ -1,6 +1,7 @@
 import React from "react";
 import "@mui/material";
 import "./App.css";
+import "./sass/main.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ExplorePage from "./pages/ExplorePage";
