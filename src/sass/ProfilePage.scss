@@ -1,9 +1,7 @@
 .title {
   color: red;
 }
-body {
-  background-color: aqua;
-}
+
 .logoBox {
   background-color: #ffffff;
   padding: 30px 120px;
@@ -14,6 +12,7 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   text-align: center;
+  box-shadow: 7px 7px 13px 13px #99999953;
   &__twitterLogo {
     width: 30px;
     margin-bottom: 20px;
