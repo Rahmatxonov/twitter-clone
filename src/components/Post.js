@@ -1,5 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
-import "../sass/Post.scss";
+import { useEffect, useState } from "react";
 
 function Post({ tweet_id, image, username, text, comments, retweets, likes }) {
   const [icons, setIcons] = useState({
